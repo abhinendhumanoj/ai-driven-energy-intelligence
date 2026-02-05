@@ -1,0 +1,61 @@
+               SOUTHERN POWER DISTRIBUTION COMPANY OF TG LIMITED
+   HT C.C. Bill cum Demand Notice for the month of July 2025, Date: 01-Aug-25
+      PAYABLE ON OR BEFORE dated: 15-Aug-25  DISCONNECTION DATE: 30-Aug-25
+
+--------------------------------------------------------------------------------
+ Contracted MD (KVA/HP) 100    |  Consumer No. MCL3706                         
+ Specified Voltage (KV) 11     |  Name         M/S ROYAL EDUCATION SOCIETY     
+ Actual Voltage (KV)    11     |  ADDRESS1     SY NO 471                       
+ Feeder : 107311240306 (CF)    |  ADDRESS2     GOWDAVELLY VILLAGE              
+ Category               2A     |  ADDRESS3     GOWDAVELLY VILLAGE              
+--------------------------------------------------------------------------------
+                           KWH          KVAH         KVA       TOD1      TOD2
+================================================================================
+ Reading On 31-JUL-25   240482.25   274052.99       78.60   45814.30    34209.14
+ Reading On 01-JUL-25   222875.05   255278.70               42680.37    32145.70
+ Difference ST:01        17607.20    18774.29                3133.93     2063.44
+ Multiplying Factor          1.00        1.00        1.00       1.00        1.00
+ Total Consumption       17607.00    18774.00       78.60    3134.00     2063.00
+ Monthly Minimum Units    2000.00                   80.00                       
+ Main Consumption        18774.00     Colony         0.00       L&F         0.00
+--------------------------------------------------------------------------------
+                          RATE              KVA/UNITS               AMOUNT Rs.
+================================================================================
+ Demand Charges Normal    Rs.500             80                         40000.00
+ Demand Charges Penal     Rs.1000            0                              0.00
+ Energy Charges           Ps.880             18774                     165211.20
+ TOD Charges              Ps.100             5197                        5197.00
+ Electricity Duty         Ps.6               18774                       1126.44
+ Colony Charges           Ps.730             0                              0.00
+ L&F Charges              Ps.880             0                              0.00
+ Green Energy Charges     Ps.0               0                              0.00
+ FSA Charges                                                                0.00
+--------------------------------------------------------------------------------
+Supplier Name  NetKWH        KVA     TOD               Sub Total       211534.64
+                                                   Cust Charges |        2000.00
+                                                       ACD SCHG |           0.00
+                                                     UI Charges |              0
+                                                   CS Surcharge |           0.00
+                                                   Addl.SCHG OA |           0.00
+                                                 Late Pmt Charg |           0.00
+                                                 Interest on ED |              0
+                                                 Incentive TOD1 |       -4447.50
+                                                 Incentive TOD2 |       -1638.00
+                                               Wheeling Charges |              0
+                                            Transmission Charges               0
+                                                  Other Charges-I              0
+                                                 Other Charges-II              0
+ *********Arrears as on 31/07/25***********         Gross Total |      207449.00
+ |                 C.C.Charge   TCSonArrear IT TCS U/s 206C(1H) |           0.00
+ |Court Cases Rs.           0             |   Other Credit Adj. |               
+ |Others      Rs.           0         0.00|     Net Bill Amount |         207449
+ |Total       Rs.           0             |       Total Arrears |              0
+ ******************************************Total Amount Payable |         207449
+Note: ACD Due for 2025-26 Rs. 0                                                 
+Two Lakh Seven Thousand Four Hundred and Fourty Nine Only                      
+
+                                                         Senior Accounts Officer
+Note: PAY YOUR BILL THROUGH THE SBI A/C NO.SPDCLPMCL3706     OP.CIRCLE 
+IFSC CODE: SBIN0004266       
+--------------------------------------------------------------------------------
+

@@ -1,11 +1,3 @@
-
-import React, { useEffect, useMemo, useState } from 'react';
-import { usePrediction } from '../context/PredictionContext.jsx';
-
-const History = () => {
-  const { history, refreshHistory, historyLoading, error } = usePrediction();
-  const [query, setQuery] = useState('');
-
 import React, { useEffect, useMemo, useState } from "react";
 import { usePrediction } from "../context/PredictionContext.jsx";
 
@@ -18,34 +10,10 @@ const History = () => {
   }, [refreshHistory]);
 
   const filtered = useMemo(() => {
-
-    if (!query.trim()) {
-      return history;
-    }
-    const lower = query.toLowerCase();
-    return history.filter((row) => row.Month.toLowerCase().includes(lower));
-  }, [history, query]);
-
-  const handleExport = () => {
-    if (!history.length) {
-      return;
-    }
-    const header = 'Month,Consumption_KWh,Bill_Amount\n';
-    const rows = history
-      .map((row) => `${row.Month},${row.Consumption_KWh},${row.Bill_Amount}`)
-      .join('\n');
-    const blob = new Blob([header + rows], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', 'energy_history.csv');
-
     if (!query.trim()) return history;
 
     const lower = query.toLowerCase();
-    return history.filter((row) =>
-      row.Month?.toLowerCase().includes(lower)
-    );
+    return history.filter((row) => row.Month?.toLowerCase().includes(lower));
   }, [history, query]);
 
   const handleExport = () => {
@@ -70,14 +38,11 @@ const History = () => {
 
   return (
     <div className="space-y-6 page-transition">
+      {/* Search + Export */}
       <section className="glass-panel p-5 rounded-2xl hover-lift">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <input
-
-            className="bg-white/80 dark:bg-slate-800/80 p-3 rounded-xl w-full md:w-64 border border-slate-200/60 dark:border-slate-700/50"
-
             className="bg-white/80 dark:bg-slate-800/80 p-3 rounded-xl w-full md:w-64 border border-slate-200/60 dark:border-slate-700/50 focus:outline-none focus:ring-2 focus:ring-emerald-400"
-
             placeholder="Search month/year"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
@@ -92,6 +57,7 @@ const History = () => {
         </div>
       </section>
 
+      {/* History Table */}
       <section className="glass-panel p-5 rounded-2xl hover-lift">
         <h2 className="text-lg font-semibold mb-3">Upload History</h2>
 
@@ -102,13 +68,9 @@ const History = () => {
             <div className="h-4 bg-slate-200/70 dark:bg-slate-700/50 rounded w-2/3" />
           </div>
         ) : filtered.length === 0 ? (
-
-          <p className="text-slate-500 dark:text-slate-300">No data available yet.</p>
-
           <p className="text-slate-500 dark:text-slate-300">
             No data available yet.
           </p>
-
         ) : (
           <div className="overflow-x-auto">
             <table className="min-w-full text-sm">
@@ -121,9 +83,9 @@ const History = () => {
               </thead>
 
               <tbody>
-                {filtered.map((row) => (
+                {filtered.map((row, index) => (
                   <tr
-                    key={`${row.Month}-${row.Consumption_KWh}`}
+                    key={`${row.Month}-${index}`}
                     className="border-t border-slate-200/50 dark:border-slate-800 hover:bg-white/40 dark:hover:bg-slate-800/40 transition"
                   >
                     <td className="py-2">{row.Month}</td>
@@ -136,14 +98,8 @@ const History = () => {
           </div>
         )}
 
-      </section>
-
-      {error && <p className="text-red-500">{error}</p>}
-
-
         {error && <p className="text-red-400 mt-3">{error}</p>}
       </section>
-
     </div>
   );
 };

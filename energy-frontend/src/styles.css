@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply rounded-2xl border border-slate-200/70 dark:border-white/10 bg-white dark:bg-[#111827] shadow-sm;
+  }
+}
+
 body {
   font-family: 'Inter', sans-serif;
 }
@@ -41,3 +60,4 @@ body {
 .spinner {
   animation: spin-slow 1s linear infinite;
 }
+

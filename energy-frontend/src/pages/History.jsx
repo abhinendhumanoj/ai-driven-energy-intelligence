@@ -1,3 +1,4 @@
+
 import React, { useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import { usePrediction } from '../context/PredictionContext.jsx';
@@ -14,9 +15,18 @@ const History = () => {
   const [monthFilter, setMonthFilter] = useState('All');
   const [page, setPage] = useState(1);
 
+import React, { useEffect, useMemo, useState } from "react";
+import { usePrediction } from "../context/PredictionContext.jsx";
+
+const History = () => {
+  const { history, refreshHistory, historyLoading, error } = usePrediction();
+  const [query, setQuery] = useState("");
+
+
   useEffect(() => {
     refreshHistory();
   }, [refreshHistory]);
+
 
   const years = useMemo(() => ['All', ...new Set(history.map((row) => `20${String(row.Month).split('-')[1] || ''}`))], [history]);
 
@@ -89,6 +99,100 @@ const History = () => {
         <button onClick={() => setPage((p) => Math.min(totalPages, p + 1))} className="px-3 py-1.5 rounded-lg border border-slate-300/70 dark:border-white/10">Next</button>
       </div>
     </PageWrapper>
+
+  const filtered = useMemo(() => {
+    if (!query.trim()) return history;
+
+    const lower = query.toLowerCase();
+    return history.filter((row) => row.Month?.toLowerCase().includes(lower));
+  }, [history, query]);
+
+  const handleExport = () => {
+    if (!history.length) return;
+
+    const header = "Month,Consumption_KWh,Bill_Amount\n";
+    const rows = history
+      .map((row) => `${row.Month},${row.Consumption_KWh},${row.Bill_Amount}`)
+      .join("\n");
+
+    const blob = new Blob([header + rows], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "energy_history.csv");
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  };
+
+  return (
+    <div className="space-y-6 page-transition">
+      {/* Search + Export */}
+      <section className="glass-panel p-5 rounded-2xl hover-lift">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <input
+            className="bg-white/80 dark:bg-slate-800/80 p-3 rounded-xl w-full md:w-64 border border-slate-200/60 dark:border-slate-700/50 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+            placeholder="Search month/year"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+          />
+
+          <button
+            onClick={handleExport}
+            className="bg-emerald-400 text-slate-900 px-5 py-3 rounded-xl font-semibold transition hover:-translate-y-0.5 hover:shadow-xl"
+          >
+            Export CSV
+          </button>
+        </div>
+      </section>
+
+      {/* History Table */}
+      <section className="glass-panel p-5 rounded-2xl hover-lift">
+        <h2 className="text-lg font-semibold mb-3">Upload History</h2>
+
+        {historyLoading && filtered.length === 0 ? (
+          <div className="space-y-3 animate-pulse">
+            <div className="h-4 bg-slate-200/70 dark:bg-slate-700/50 rounded" />
+            <div className="h-4 bg-slate-200/70 dark:bg-slate-700/50 rounded w-5/6" />
+            <div className="h-4 bg-slate-200/70 dark:bg-slate-700/50 rounded w-2/3" />
+          </div>
+        ) : filtered.length === 0 ? (
+          <p className="text-slate-500 dark:text-slate-300">
+            No data available yet.
+          </p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-sm">
+              <thead>
+                <tr className="text-left text-slate-500 dark:text-slate-300">
+                  <th className="py-2">Month</th>
+                  <th className="py-2">Consumption (kWh)</th>
+                  <th className="py-2">Bill Amount</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {filtered.map((row, index) => (
+                  <tr
+                    key={`${row.Month}-${index}`}
+                    className="border-t border-slate-200/50 dark:border-slate-800 hover:bg-white/40 dark:hover:bg-slate-800/40 transition"
+                  >
+                    <td className="py-2">{row.Month}</td>
+                    <td className="py-2">{row.Consumption_KWh}</td>
+                    <td className="py-2">{row.Bill_Amount}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        {error && <p className="text-red-400 mt-3">{error}</p>}
+      </section>
+    </div>
+
   );
 };
 

@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   color-scheme: light;
 }
@@ -19,3 +20,44 @@ body {
     @apply rounded-2xl border border-slate-200/70 dark:border-white/10 bg-white dark:bg-[#111827] shadow-sm;
   }
 }
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/20 dark:border-slate-700/50 shadow-xl;
+  }
+
+  .page-transition {
+    animation: page-fade-slide 0.45s ease-out;
+  }
+
+  .hover-lift {
+    @apply transition-transform duration-200 hover:-translate-y-1 hover:shadow-2xl;
+  }
+}
+
+@keyframes page-fade-slide {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin-slow 1s linear infinite;
+}
+

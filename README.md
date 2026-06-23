@@ -155,18 +155,23 @@ This research explores the application of Artificial Intelligence and Data Analy
 
 ## 📸 Screenshots
 
-Add screenshots of:
+### Energy Analytics Dashboard
 
-* Data Analysis Dashboard
-* Power BI Reports
-* Prediction Results
-* Energy Consumption Visualizations
+![Dashboard Results](Dahboard.png)
 
-Example:
+The dashboard provides:
 
-```markdown
+- Electricity consumption monitoring
+- Actual vs Forecast comparison
+- Monthly energy insights
+- Cost analysis and reporting
+- AI-powered predictive analytics
 
+### Prediction Results
 
+![Prediction Results](prediction.jpeg)
+
+The predictive analytics module helps estimate future electricity consumption patterns and supports intelligent energy management decisions.
 
 ```
 ---

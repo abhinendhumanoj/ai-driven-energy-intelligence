@@ -165,9 +165,9 @@ Add screenshots of:
 Example:
 
 ```markdown
-![Dashboard](screenshots/dashboard.png)
-**![Dashboard Screenshot](https://github.com/user-attachments/assets/dc3e958c-26c7-420a-9fb0-f1af2bfac9e0)**
-![Predictions](screenshots/predictions.png)
+
+
+
 ```
 ---
 
